@@ -12,8 +12,6 @@ rust:
    - stable
 
 script:
-  -   cargo build 
-   -   cargo test
+  - cargo build 
+  - cargo test
       
-after_success:
-    
