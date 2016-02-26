@@ -9,29 +9,11 @@ addons:
       - libdw-dev
 
 rust:
-  - nightly
-  - beta
-  - stable
-
-before_script:
-  - |
-      pip install 'travis-cargo<0.2' --user &&
-      export PATH=$HOME/.local/bin:$PATH
+   - stable
 
 script:
-  - |
-      travis-cargo build &&
-      travis-cargo test &&
-      travis-cargo bench &&
-      travis-cargo --only stable doc
-
+  -   cargo build 
+   -   cargo test &&
+      
 after_success:
-  # upload the documentation from the build with stable (automatically only actually
-  # runs on the master branch, not individual PRs)
-  - travis-cargo --only stable doc-upload
-  # measure code coverage and upload to coveralls.io
-  - travis-cargo coveralls --no-sudo
-env:
-  global:
-    - TRAVIS_CARGO_NIGHTLY_FEATURE=""
-    - secure: "N0VHBpQ8Co81/xVM+MQn2JZIFkJMNYf1nn+lwxUrfotesRQUAR6Wh3KHl/tgCdAFw+WvYk6kfxQ0ODFJd7iRdlZez2nujwxczXJj4pU+vqcFkJhlr1uBl2HrWeboGVv3M/60HWyERRz5nI5lGR5FP5qgPQTE/KRTnrPYADBgKNo="
+    
